@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/profile}" th:object="${user}">
+    <label for="email">Enter email: </label>
+    <input type="email" th:field="*{email}" id="email"/>
+    <div style="color:#ff0000" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</div>
+    <br/>
+    <label for="password">Enter password: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</div>
+    <br/>
+    <label for="firstName">Enter firstName: </label>
+    <input type="text" th:field="*{firstName}" id="firstName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">password Error</div>
+    <br/>
+    <label for="lastName">Enter lastName: </label>
+    <input type="text" th:field="*{lastName}" id="lastName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">password Error</div>
+    <br/>
+    <label for="middleName">Enter middleName: </label>
+    <input type="text" th:field="*{middleName}" id="middleName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}">password Error</div>
+    <br/>
+        <input type="radio"  th:field="*{role}" value="USER" /> USER<Br>
+        <input type="radio" th:field="*{role}"  value="ADMIN" /> ADMIN<Br>
+    <br/>
+        <input type="radio"  th:field="*{status}" value="ACTIVE" /> ACTIVE<Br>
+        <input type="radio" th:field="*{status}"  value="BANNED" /> BANNED<Br>
+    <br/>
+    <label for="phone">Enter phone: </label>
+    <input type="text" th:field="*{phone}" id="phone"/>
+    <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">password Error</div>
+    <br/>
+    <label for="viber">Enter viber: </label>
+    <input type="text" th:field="*{viber}" id="viber"/>
+    <div style="color:red" th:if="${#fields.hasErrors('viber')}" th:errors="*{middleName}">password Error</div>
+    <br/>
+    <label for="telegram">Enter telegram: </label>
+    <input type="text" th:field="*{telegram}" id="telegram"/>
+    <div style="color:red" th:if="${#fields.hasErrors('telegram')}" th:errors="*{telegram}">password Error</div>
+    <br/>
+
+    <input type="submit" value="Create!"/>
+</form>
+
+
+</body>
+</html>

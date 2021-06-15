@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:each="tariff : ${tariff}">
+    <a th:text="${tariff.id + ',' + tariff.name + ',' + tariff.unit + ','+tariff.toPay}">profile</a>
+    <form method="post" th:action="@{/tariff/{id}(id=${tariff.getId()})}">
+        <input type="submit" value="DELETE"/>
+    </form>
+    <a th:href="@{/tariff/{id}/edit(id=${tariff.getId()})}">Edit</a>
+
+</div>
+
+<a href="/tariff/create">Create new profile</a>
+
+</body>
+</html>

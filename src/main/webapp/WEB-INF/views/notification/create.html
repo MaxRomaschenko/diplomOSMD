@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/news}" th:object="${notification}">
+    <label for="title">Enter title: </label>
+    <input type="text" th:field="*{title}" id="title"/>
+    <div style="color:#ff0000" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">email Error</div>
+    <br/>
+    <label for="messageText">Enter messageText: </label>
+    <input type="text" th:field="*{messageText}" id="messageText"/>
+    <div style="color:red" th:if="${#fields.hasErrors('messageText')}" th:errors="*{messageText}">password Error</div>
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+
+
+</body>
+</html>

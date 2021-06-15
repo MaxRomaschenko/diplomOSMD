@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p th:text="${notification.title}">VALUE</p>
+<p th:text="${notification.messageText}">VALUE</p>
+<p th:text="${notification.user.email}">VALUE</p>
+
+<a th:href="@{/news/{id}/edit(id=${notification.getId()})}">Edit</a>
+
+<form method="post" th:action="@{/news/{id}(id=${notification.id})}">
+    <input type="submit" value="DELETE"/>
+</form>
+
+</body>
+</html>

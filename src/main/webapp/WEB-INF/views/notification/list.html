@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:each="notification : ${notification}">
+    <a th:href="@{/news/index/{id}(id=${notification.id})}"
+       th:text="${notification.id + ', ' +  notification.title + ', ' +  notification.messageText + ', ' + notification.user.email}">profile</a>
+</div>
+
+<a href="/news/create">Create new profile</a>
+
+</body>
+</html>

@@ -1,22 +1,46 @@
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>Login Customer</title>
+    <link th:href = "@{/styles/lk.css}"  href="/static/css/lk.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
-    <form class="form-signin" method="post" action="/auth/login">
-        <h2 class="form-signin-heading">Login</h2>
-        <p>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
-        </p>
-        <p>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-        </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
+<!--    <form class="form-signin" method="post" action="/auth/login">-->
+<!--        <h2 class="form-signin-heading">Login</h2>-->
+<!--        <p>-->
+<!--            <label for="username">Username</label>-->
+<!--            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label for="password">Password</label>-->
+<!--            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>-->
+<!--        </p>-->
+<!--        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>-->
+<!--    </form>-->
+    <center>
+        <a class="hiddenanchor" id="zatemnenie2"></a>
+        <a class="hiddenanchor" id="tologin"></a>
+        <div id="wrapper">
+            <div id="login" class="animate form">
+                <form  action="/auth/login" autocomplete="on" method="post"> <!-- Сыылка на скрипт -->
+                    <h1>Вход</h1>
+                    <a href="/closeWindow"  class="close_window" style="position: absolute;right: 10px;top: 4px;border: none;font-size: 20px;">X</a>
+                    <p>
+                        <label for="username" class="uname" data-icon="u" > Ваш e-mail </label>
+                        <input id="username" name="username" required="required" type="text" placeholder="some@some.com"/>
+                    </p>
+                    <p>
+                        <label for="password" class="youpasswd" data-icon="p"> Ваш пароль </label>
+                        <input id="password" name="password" required="required" type="password" placeholder="" />
+                    </p>
+                    <p class="login button">
+                        <input  type="submit" value="Войти" />
+                    </p>
+                </form>
+            </div>
+        </div>
+    </center>
 </div>
 </body>
 </html>

@@ -25,6 +25,7 @@ public class NotificationController {
     private final UserService userService;
 
 
+
     @Autowired
     public NotificationController(NotificationService notificationService, UserService userService) {
         this.notificationService = notificationService;
@@ -39,7 +40,6 @@ public class NotificationController {
     }
 
     @GetMapping("/list")
-    @PreAuthorize("hasAuthority('user:read')")
     public String listOfNotifications(Model model) {
         List<Notification> notifications = notificationService.findAll();
         model.addAttribute("notification", notifications);
@@ -55,7 +55,7 @@ public class NotificationController {
     @PostMapping()
     @PreAuthorize("hasAuthority('admin:write')")
     public String createNotification(@ModelAttribute("notification") @Valid Notification notification,
-                             BindingResult bindingResult){
+                                     BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
             return "notification/create";
         }

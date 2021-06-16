@@ -7,10 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
@@ -40,9 +37,18 @@ public class SpringConfig implements WebMvcConfigurer {
         return templateResolver;
     }
 
-//    public void addViewControllers(ViewControllerRegistry registry) {
-//        registry.addViewController("/login").setViewName("login");
-//    }
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/scripts/**").addResourceLocations("/WEB-INF/scripts/");
+        registry.addResourceHandler("/styles/**").addResourceLocations("/WEB-INF/styles/");
+        registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/images/");
+        registry.addResourceHandler("/fonts/**").addResourceLocations("/WEB-INF/fonts/");
+        registry.addResourceHandler("/rs-plugin/**").addResourceLocations("/WEB-INF/rs-plugin/");
+    }
 
     @Bean
     public SpringTemplateEngine templateEngine() {

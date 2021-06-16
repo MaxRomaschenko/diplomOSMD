@@ -35,4 +35,5 @@ public class Tariff {
     @Column(name ="to_pay")
     @Min(0)
     private Double toPay;
+
 }

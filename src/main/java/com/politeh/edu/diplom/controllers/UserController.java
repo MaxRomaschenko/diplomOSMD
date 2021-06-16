@@ -5,6 +5,8 @@ import com.politeh.edu.diplom.services.UserService;
 
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,12 +29,26 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("/")
+    @PreAuthorize("hasAuthority('user:read')")
+    public String userProfile(Model model){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.findByEmail(userDetails.getUsername());
+        return "redirect:index/" + user.getId();
+    }
+
+
     @GetMapping("/index/{id}")
     @PreAuthorize("hasAuthority('user:read')")
     public String index(@PathVariable("id") Long id, Model model) { //переход на профиль
         model.addAttribute("user", userService.findById(id));
-        return "profile/index";
+        return "profile/profile";
     }
+
+//    @GetMapping("/getProfile")
+//    public String profileGet(Model model){
+//
+//    }
 
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('user:read')")

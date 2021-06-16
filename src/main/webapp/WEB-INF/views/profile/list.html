@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
 </head>
 <body>
-
 <div th:each="profile : ${profile}">
     <a th:href="@{/profile/index/{id}(id=${profile.id})}"
        th:text="${profile.id + ','}">profile</a>

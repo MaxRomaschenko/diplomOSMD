@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -41,9 +42,13 @@ public class HouseController {
     @PreAuthorize("hasAuthority('admin:write')")
     public String createUser(@ModelAttribute("house") @Valid House house,
                              BindingResult bindingResult){
-        if (bindingResult.hasErrors()) {
+        House houseCheck = houseService.findByAddress(house.getAddress());
+        if (bindingResult.hasErrors() || houseCheck != null) {
             return "house/create";
         }
+        house.setCreated_at(LocalDateTime.now());
+        house.setUpdated_at(LocalDateTime.now());
+
 
         houseService.saveHouse(house);
         return "redirect:/house/list";
@@ -60,9 +65,15 @@ public class HouseController {
     @PreAuthorize("hasAuthority('admin:write')")
     public String update(@ModelAttribute("house") @Valid House house,
                          BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return "house/edit";
 
+        House houseCheck = houseService.findByAddress(house.getAddress());
+        if (bindingResult.hasErrors() || houseCheck != null && !house.getId().equals(houseCheck.getId())) {
+            return "house/edit";
+        }
+        if(houseCheck != null){
+            house.setCreated_at(houseCheck.getCreated_at());
+        }
+        house.setUpdated_at(LocalDateTime.now());
         houseService.saveHouse(house);
         return "redirect:/house/list";
     }

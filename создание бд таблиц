@@ -9,7 +9,6 @@ DROP TABLE tariff CASCADE;
 DROP TABLE house CASCADE;
 DROP TABLE section CASCADE;
 
-DROP TYPE user_role;
 DROP TYPE invoice_status;
 DROP TYPE payment_t;
 DROP TYPE transaction_type;
@@ -25,7 +24,6 @@ DROP SEQUENCE next_cashbox;
 DROP SEQUENCE next_notification;
 DROP SEQUENCE next_meter;
 
-CREATE TYPE user_role AS ENUM ('житель','работник ОСМД');
 CREATE TYPE invoice_status AS ENUM ('оплачена','не оплачена ');
 CREATE TYPE payment_t AS ENUM ('оплата за квартиру','прочий приход ','прочий расход');
 CREATE TYPE transaction_type AS ENUM ('приход','расход ');
@@ -44,18 +42,20 @@ CREATE SEQUENCE next_meter;
 
 CREATE TABLE user_profile(
     id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_user'),
-    password VARCHAR,
-    email VARCHAR(20),
-    first_name VARCHAR(20),
-    last_name VARCHAR(20),
-    middle_name VARCHAR(20),
-    phone VARCHAR(20),
-    viber VARCHAR(20),
+    password VARCHAR NOT NULL ,
+    email VARCHAR(50) NOT NULL,
+    first_name VARCHAR(25) NOT NULL,
+    last_name VARCHAR(25) NOT NULL,
+    middle_name VARCHAR(30) ,
+    role VARCHAR(20) NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    phone VARCHAR(30) NOT NULL,
+    viber VARCHAR(30),
     telegram VARCHAR(20),
-    role user_role,
-    created_at TIMESTAMP  ,
+    created_at TIMESTAMP,
     updated_at TIMESTAMP
 );
+
 CREATE TABLE notification(
     id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_notification'),
     title VARCHAR,
@@ -64,21 +64,24 @@ CREATE TABLE notification(
     updated_at TIMESTAMP,
     user_id BIGINT REFERENCES user_profile(id)
 );
+
 CREATE TABLE section(
     id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_section'),
     section_number INT
 );
+
 CREATE TABLE house(
      id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_house'),
      house_name VARCHAR(100),
-     address VARCHAR(100),
+     address VARCHAR(200),
      created_at TIMESTAMP,
      updated_at TIMESTAMP
 );
 CREATE TABLE tariff(
     id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_tariff'),
+    name VARCHAR(70),
     unit VARCHAR(10),
-    to_pay money
+    to_pay NUMERIC(10,2)
 );
 CREATE TABLE floor(
     id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_floor'),

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:each="house : ${house}">
+    <a  th:text="${house.id + ' , ' +  house.houseName + ' , ' +  house.address }">profile</a>
+    <br>
+    <a th:href="@{/house/{id}/edit(id=${house.getId()})}">Edit</a>
+    <br>
+    <form method="post" th:action="@{/house/{id}(id=${house.id})}">
+        <input type="submit" value="DELETE"/>
+    </form>
+</div>
+
+
+
+<a href="/house/create">Create new profile</a>
+
+</body>
+</html>

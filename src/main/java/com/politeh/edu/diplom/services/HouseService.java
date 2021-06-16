@@ -17,6 +17,10 @@ public class HouseService {
         this.houseRepo = houseRepo;
     }
 
+    public House findByAddress(String address){
+       return houseRepo.findByAddress(address);
+    }
+
     public House saveHouse(House house){
         return houseRepo.save(house);
     }

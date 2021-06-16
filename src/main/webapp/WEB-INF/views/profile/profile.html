@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="utf-8">
+    <title>TEST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link th:href = "@{/styles/bootstrap.css}"  href="/static/css/bootstrap.css" rel="stylesheet">
+    <link th:href = "@{/styles/bootstrap-responsive.css}"  href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link th:href = "@{/styles/base.css}"  href="/static/css/base.css" rel="stylesheet">
+    <link th:href = "@{/styles/flexslider.css}"  href="/static/css/flexslider.css" rel="stylesheet">
+    <link th:href = "@{/styles/prettyPhoto.css}"  href="/static/css/prettyPhoto.css" rel="stylesheet">
+    <link th:href = "@{/styles/style.css}"  href="/static/css/style.css" rel="stylesheet">
+    <link th:href = "@{/styles/lk.css}"  href="/static/css/lk.css" rel="stylesheet">
+    <link th:href = "@{/styles/font-awesome.min.css}"  href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen">
+    <link th:href = "@{/styles/ico/favicon.ico}"  rel="shortcut icon" href="/static/ico/favicon.ico">
+</head>
+
+<body>
+
+<div id="pattern_bg"></div>
+<div id="zatemnenie">
+    <?php include 'login.php';?>
+
+</div>
+
+<div id="main_wrapper">
+    <div class="main_wrapper_inner">
+
+</body>
+<div class="header_top_second">
+    <div class="container header_top_second_inner">
+        <div class="row">
+            <div class="span12">
+                <a href="/" class="logotype1"><span>ОСМД</span><div><b>"КАРУСЕЛЬ"</b></div></a>
+                <div class="header_top_inner1">
+                    <!-- Старт Меню -->
+                    <div class="main_menu">
+                        <nav id="dropdown">
+                            <ul class="sf-menu clearfix">
+                                <li class="current"><a href="/" class="trigger"><span>Главная</span></a>
+                                </li>
+                                <li><a href="/news/list" class="trigger"><span>Новости</span></a>
+                                </li>
+                                <li><a th:href="@{/profile/}" class="trigger" th:method="GET"><span>Личный кабинет</span></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="content">
+
+    <div class="content_wrapper">
+        <div class="content_wrapper_inner">
+            <div class="clear"></div>
+            <div class="sidenav">
+                <a href="kvit.php">Квитанции</a>
+                <br>
+                <a href="tarif.php">Тарифы</a>
+                <br>
+                <a href="index.php">Новости</a>
+                <br>
+                <a th:href="@{/profile/}">Профиль</a>
+            </div>
+
+
+            <div class="prof2">
+                <h1>Профиль</h1>
+                <div class="prof3">
+                    <center><img style="width:25%;" src="http://cdn.onlinewebfonts.com/svg/download_102722.png"/>
+                        <h4 th:text="${user.lastName + ' ' + user.firstName + ' ' + user.middleName}">Иванов Иван Иванович</h4>
+                    </center>
+                    <table id="myTable2">
+                        <tr>
+                            <td>Телефон:</td>
+                            <th th:text="${user.phone}" >  </th>
+                        </tr>
+                        <tr>
+                            <td>Viber:</td>
+                            <th th:text="${user.viber}"> </th>
+                        </tr>
+                        <tr>
+                            <td>Telegram:</td>
+                            <th th:text="${user.telegram}"> </th>
+                        </tr>
+                        <tr>
+                            <td>E-mail:</td>
+                            <th th:text="${user.email}"> </th>
+                        </tr>
+                        <tr>
+                            <td>Роль:</td>
+                            <th th:text="${user.role.name()}">4</th>
+                        </tr>
+                    </table>
+                    <a th:href="@{/profile/{id}/edit(id=${user.getId()})}"><button style="margin: 20px 20px 10px 70px; border-radius: 20px;">Редактировать</button></a>
+                </div>
+                <div class="prof4">
+                    <h5>Описание квартиры</h5>
+                    <table id="myTable3">
+                        <tr>
+                            <td style="width:50%;">Адрес:</td>
+                            <th>Пушкинская 10</th>
+                        </tr>
+                        <tr>
+                            <td>№ Квартиры:</td>
+                            <th>1</th>
+                        </tr>
+                        <tr>
+                            <td>Площадь:</td>
+                            <th>2 м2</th>
+                        </tr>
+                        <tr>
+                            <td>Этаж:</td>
+                            <th>3</th>
+                        </tr>
+                        <tr>
+                            <td>Лицевой счет:</td>
+                            <th>1231254</th>
+                        </tr>
+                        <tr>
+                            <td>Сумма долга:</td>
+                            <th>0.00</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+            <footer id="footer">
+                <div class="container">
+                    <div class="footer_inner">
+                        <div class="row">
+
+                            <div class="span3 widget">
+                                <h4 class="widget_title">О нас</h4>
+                                <div class="widget_text">
+                                    <span class="foot_title">Название компании</span><br/>
+                                    <p>ХЗ</p>
+                                    <div class="top10 clearfix"><p>ХЗ
+                                        ХЗ</p> </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="span3 widget">
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="span3 widget">
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="span3 widget">
+                                <h4 class="widget_title">Контакты</h4>
+                                <div class="widget_text">
+                                    <div class="world_map">
+                                        <div class="icon_home sub_text2"> 27 Street, Road Norh, New York </div>
+                                        <div class="icon_tele2 sub_text2"> +7 (201) 9-556-700</div>
+                                        <div class="icon_fax sub_text2"> +7 (201) 9-556-707</div>
+                                        <div class="icon_mail sub_text2"> <a href="#">support@managov.com</a></div>
+                                        <div class="icon_time sub_text2"> 8 AM -  5 PM  Always  24/7</div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+
+
+        </div>
+    </div>
+</div>
+</html>

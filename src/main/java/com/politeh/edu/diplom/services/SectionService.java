@@ -29,6 +29,9 @@ public class SectionService {
         sectionRepo.deleteById(id);
     }
 
+    public Section findBySectionNumber(Integer sectionNumber){
+        return sectionRepo.findBySectionNumber(sectionNumber);
+    }
 
     public List<Section> findAll(){
         return sectionRepo.findAll();

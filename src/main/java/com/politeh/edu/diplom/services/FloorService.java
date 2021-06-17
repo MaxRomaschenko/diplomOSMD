@@ -29,6 +29,9 @@ public class FloorService {
         floorRepo.deleteById(id);
     }
 
+    public Floor findByfloorService(Integer floorNum){
+        return floorRepo.findByFloorNumber(floorNum);
+    }
 
     public List<Floor> findAll(){
         return floorRepo.findAll();

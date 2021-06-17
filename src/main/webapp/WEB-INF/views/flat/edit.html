@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/profile}" th:object="${user}">
+
+<form th:method="POST" th:action="@{/profile/{id}/edit(id=${user.getId()})}" th:object="${user}">
     <label for="email">Enter email: </label>
     <input type="email" th:field="*{email}" id="email"/>
     <div style="color:#ff0000" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</div>
@@ -26,11 +27,12 @@
     <input type="text" th:field="*{middleName}" id="middleName"/>
     <div style="color:red" th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}">password Error</div>
     <br/>
-        <input type="radio"  th:field="*{role}" value="USER" /> USER<Br>
-        <input type="radio" th:field="*{role}"  value="ADMIN" /> ADMIN<Br>
+    <input type="radio"  th:field="*{role}" value="USER" /> USER<Br>
+    <input type="radio" th:field="*{role}"  value="ADMIN" /> ADMIN<Br>
     <br/>
-        <input type="radio"  th:field="*{status}" value="ACTIVE" /> ACTIVE<Br>
-        <input type="radio" th:field="*{status}"  value="BANNED" /> BANNED<Br>
+    <input type="radio"  th:field="*{status}" value="ACTIVE" /> ACTIVE<Br>
+    <input type="radio" th:field="*{status}"  value="BANNED" /> BANNED<Br>
+    <div style="color:red" th:if="${#fields.hasErrors('status')}" th:errors="*{status}">password Error</div>
     <br/>
     <label for="phone">Enter phone: </label>
     <input type="text" th:field="*{phone}" id="phone"/>
@@ -45,9 +47,8 @@
     <div style="color:red" th:if="${#fields.hasErrors('telegram')}" th:errors="*{telegram}">password Error</div>
     <br/>
 
-    <input type="submit" value="Create!"/>
+    <input type="submit" value="Update!"/>
+
 </form>
-
-
 </body>
 </html>

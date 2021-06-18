@@ -92,10 +92,8 @@ CREATE TABLE floor(
 CREATE TABLE flat(
     id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_flat'),
     flat_number INT NOT NULL ,
-    square DECIMAL(5,2) NOT NULL ,
-    bank_book VARCHAR(9) NOT NULL ,
-    created_at TIMESTAMP  ,
-    updated_at TIMESTAMP,
+    square DECIMAL(12,2) NOT NULL ,
+    bank_book VARCHAR(20) NOT NULL ,
     house_id BIGINT REFERENCES house(id)  ,
     floor_id BIGINT REFERENCES floor(id)  ,
     user_id  BIGINT REFERENCES user_profile(id)  ,
@@ -113,6 +111,7 @@ CREATE TABLE invoice(
     updated_at TIMESTAMP,
     flat_id BIGINT REFERENCES flat(id)
 );
+
 CREATE TABLE cashbox(
     id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_cashbox'),
     list_number VARCHAR(20),
@@ -123,12 +122,13 @@ CREATE TABLE cashbox(
     comment VARCHAR,
     flat_id BIGINT REFERENCES flat(id)
     );
+
 CREATE TABLE meter
 (
     id             BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_meter'),
     meter_name     VARCHAR(20),
     data           TIMESTAMP,
-    meter_readings DECIMAL(5, 2),
+    meter_readings DECIMAL(17, 2),
     unit           VARCHAR(20),
     flat_id        BIGINT REFERENCES flat (id)
 );

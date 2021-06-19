@@ -22,13 +22,13 @@ public class TariffController {
         this.tariffService = tariffService;
     }
 
-    @GetMapping("/list")
+    @GetMapping("/")
     @PreAuthorize("hasAuthority('user:read')")
     public String listOfUsers(Model model) {
         List<Tariff> tariffs = tariffService.findAll();
         model.addAttribute("tariff", tariffs);
 
-        return "tariff/list";
+        return "new/tariff";
     }
 
     @GetMapping("/create")
@@ -45,8 +45,9 @@ public class TariffController {
             return "tariff/create";
         }
 
+
         tariffService.saveTariff(tariff);
-        return "redirect:/tariff/list";
+        return "redirect:/tariff/";
     }
 
     @GetMapping("/{id}/edit")

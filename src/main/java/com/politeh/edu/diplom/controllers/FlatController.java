@@ -1,9 +1,8 @@
 package com.politeh.edu.diplom.controllers;
 
 import com.politeh.edu.diplom.model.Flat;
-import com.politeh.edu.diplom.model.Section;
-import com.politeh.edu.diplom.model.Tariff;
-import com.politeh.edu.diplom.model.User;
+import com.politeh.edu.diplom.repository.FlatRepo;
+import com.politeh.edu.diplom.repository.TariffRepo;
 import com.politeh.edu.diplom.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -13,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -28,7 +28,9 @@ public class FlatController {
 
 
     @Autowired
-    public FlatController(FlatService flatService, FloorService floorService, TariffService tariffService, UserService userService, HouseService houseService, SectionService sectionService) {
+    public FlatController(FlatService flatService, FloorService floorService,
+                          TariffService tariffService, UserService userService,
+                          HouseService houseService, SectionService sectionService) {
         this.flatService = flatService;
         this.floorService = floorService;
         this.tariffService = tariffService;
@@ -54,22 +56,29 @@ public class FlatController {
 
     @PostMapping()
     @PreAuthorize("hasAuthority('admin:write')")
-    public String createUser(@ModelAttribute("flat") @Valid Flat flat,
+    public String createFlat(@ModelAttribute("flat") @Valid Flat flat,
                              BindingResult bindingResult){
 
         if (bindingResult.hasErrors()) {
             return "flat/create";
         }
-        flat.setUser( userService.findByEmail(flat.getUser().getEmail()));
-        flat.setFloor(floorService.findByfloorService(flat.getFloor().getFloorNumber()));
-        flat.setSection( sectionService.findBySectionNumber(flat.getSection().getSectionNumber()));
-        flat.setHouse(houseService.findByAddress(flat.getHouse().getAddress()));
-        List<Tariff> tariffList = tariffService.findAll();
-        flat.setTariffs(tariffList);
 
+        Flat flat1 = new Flat.Builder(flat)
+                .setUser( userService.findByEmail(flat.getUser().getEmail()))
+                .setFloor(floorService.findByfloor(flat.getFloor().getFloorNumber()))
+                .setSection(sectionService.findBySectionNumber(flat.getSection().getSectionNumber()))
+                .setHouse(houseService.findByAddress(flat.getHouse().getAddress()))
+                .build();
 
-        flatService.saveFlat(flat);
+        flatService.saveFlat(flat1);
         return "redirect:/flat/list";
+    }
+
+    @GetMapping("/index/{id}")
+    @PreAuthorize("hasAuthority('user:read')")
+    public String index(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("flat", flatService.findById(id));
+        return "flat/index";
     }
 
     @GetMapping("/{id}/edit")
@@ -87,8 +96,14 @@ public class FlatController {
         if (bindingResult.hasErrors()) {
             return "flat/edit";
         }
+        Flat flat1 = new Flat.Builder(flat)
+                .setUser( userService.findByEmail(flat.getUser().getEmail()))
+                .setFloor(floorService.findByfloor(flat.getFloor().getFloorNumber()))
+                .setSection(sectionService.findBySectionNumber(flat.getSection().getSectionNumber()))
+                .setHouse(houseService.findByAddress(flat.getHouse().getAddress()))
+                .build();
 
-        flatService.saveFlat(flat);
+        flatService.saveFlat(flat1);
         return "redirect:/flat/list";
     }
 
@@ -98,4 +113,6 @@ public class FlatController {
         flatService.deleteById(id);
         return "redirect:/flat/list";
     }
+
+
 }

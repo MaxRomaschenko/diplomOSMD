@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -20,9 +21,9 @@ public class Invoice {
     private Long id;
 
     @Column(name = "period_start")
-    private LocalDateTime periodStart;
+    private LocalDate periodStart;
     @Column(name = "period_end")
-    private LocalDateTime periodEnd;
+    private LocalDate periodEnd;
 
     @NotNull(message = "Выберите статус пользователя")
     @Enumerated(EnumType.STRING)

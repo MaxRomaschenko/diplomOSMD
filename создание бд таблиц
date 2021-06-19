@@ -77,12 +77,7 @@ CREATE TABLE house(
      created_at TIMESTAMP,
      updated_at TIMESTAMP
 );
-CREATE TABLE tariff(
-    id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_tariff'),
-    name VARCHAR(70),
-    unit VARCHAR(10),
-    to_pay NUMERIC(10,2)
-);
+
 CREATE TABLE floor(
     id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_floor'),
     floor_number INT ,
@@ -98,9 +93,17 @@ CREATE TABLE flat(
     floor_id BIGINT REFERENCES floor(id)  ,
     user_id  BIGINT REFERENCES user_profile(id)  ,
     section_id BIGINT REFERENCES section(id)  ,
-    tariff_id BIGINT REFERENCES tariff(id)
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
 );
 
+CREATE TABLE tariff(
+                       id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_tariff'),
+                       name VARCHAR(70),
+                       unit VARCHAR(10),
+                       to_pay NUMERIC(10,2),
+                       house_id BIGINT REFERENCES house(id)
+);
 CREATE TABLE invoice(
     id BIGINT NOT NULL PRIMARY KEY DEFAULT NEXTVAL('next_invoice'),
     period_start TIMESTAMP  ,

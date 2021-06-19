@@ -18,7 +18,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/floor")
-public class FloorController {
+public class  FloorController {
     private final FloorService floorService;
     private final HouseService houseService;
 

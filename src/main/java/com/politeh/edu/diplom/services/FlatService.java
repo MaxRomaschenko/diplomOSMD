@@ -1,6 +1,8 @@
 package com.politeh.edu.diplom.services;
 
 import com.politeh.edu.diplom.model.Flat;
+import com.politeh.edu.diplom.model.Tariff;
+import com.politeh.edu.diplom.model.User;
 import com.politeh.edu.diplom.repository.FlatRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -8,31 +8,31 @@
 <body>
 <form th:method="POST" th:action="@{/flat}" th:object="${flat}">
 
-    <label for="flatNumber">Enter flatNumber: </label>
+    <label for="flatNumber">Enter Номер квартирі: </label>
     <input type="text" th:field="*{flatNumber}" id="flatNumber"/>
     <div style="color:#ff0000" th:if="${#fields.hasErrors('flatNumber')}"  th:errors="*{flatNumber}">email Error</div>
     <br/>
-    <label for="square">Enter square: </label>
+    <label for="square">Enter Площадь: </label>
     <input type="text" th:field="*{square}" id="square"/>
     <div style="color:#ff0000" th:if="${#fields.hasErrors('square')}"  th:errors="*{square}">email Error</div>
     <br/>
-    <label for="bankBook">Enter bankBook: </label>
+    <label for="bankBook">Enter Лицевой счёт: </label>
     <input type="text" th:field="*{bankBook}" id="bankBook"/>
     <div style="color:#ff0000" th:if="${#fields.hasErrors('bankBook')}"  th:errors="*{bankBook}">email Error</div>
     <br/>
-    <label for="house">Enter house.address: </label>
+    <label for="house">Enter Адресс дома: </label>
     <input type="text" th:field="*{house.address}" id="house"/>
     <div style="color:#ff0000" th:if="${#fields.hasErrors('house.address')}"  th:errors="*{house.address}">email Error</div>
     <br/>
     <label for="user">Enter email: </label>
     <input type="text" th:field="*{user.email}" id="user"/>
-    <div style="color:#ff0000" th:if="${#fields.hasErrors('user')}"  th:errors="*{house.address}">email Error</div>
+    <div style="color:#ff0000" th:if="${#fields.hasErrors('user')}"  th:errors="*{user.email}">email Error</div>
     <br/>
-    <label for="floor">Enter floorNumber: </label>
+    <label for="floor">Enter Номер этажа: </label>
     <input type="text" th:field="*{floor.floorNumber}" id="floor"/>
     <div style="color:red" th:if="${#fields.hasErrors('floor')}" th:errors="*{floor.floorNumber}">password Error</div>
     <br/>
-    <label for="section">Enter sectionNumber: </label>
+    <label for="section">Enter номер секции: </label>
     <input type="text" th:field="*{section.sectionNumber}" id="section"/>
     <div style="color:red" th:if="${#fields.hasErrors('section')}" th:errors="*{section}">section Error</div>
     <br/>

@@ -27,7 +27,8 @@
 </div>
 
 <div id="main_wrapper">
-    <div class="main_wrapper_inner">
+    <div class="main_wrapper_inner"></div>
+</div>
 
 </body>
 <div class="header_top_second">
@@ -64,9 +65,19 @@
             <div class="sidenav">
                 <a href="kvit.php">Квитанции</a>
                 <br>
-                <a href="tarif.php">Тарифы</a>
+                <a th:href="@{/tariff/}">Тарифы</a>
                 <br>
-                <a href="index.php">Новости</a>
+                <a href="#" >Касса</a>
+                <br>
+                <a href="#">Квартиры</a>
+                <br>
+                <a href="#">Владельцы квартир</a>
+                <br>
+                <a href="#">Дома</a>
+                <br>
+                <a href="/news/list">Новости</a>
+                <br>
+                <a href="/meter">Показания счётчиков</a>
                 <br>
                 <a th:href="@{/profile/}">Профиль</a>
             </div>

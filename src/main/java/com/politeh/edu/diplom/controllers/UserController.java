@@ -37,18 +37,12 @@ public class UserController {
         return "redirect:index/" + user.getId();
     }
 
-
     @GetMapping("/index/{id}")
     @PreAuthorize("hasAuthority('user:read')")
     public String index(@PathVariable("id") Long id, Model model) { //переход на профиль
         model.addAttribute("user", userService.findById(id));
         return "profile/profile";
     }
-
-//    @GetMapping("/getProfile")
-//    public String profileGet(Model model){
-//
-//    }
 
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('user:read')")
@@ -72,10 +66,10 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "profile/create";
         }
-        User user1 = userService.findByEmail(user.getEmail());
+        User checkUser = userService.findByEmail(user.getEmail());
 
-        if(user1 != null) {
-            if (user1.getEmail().equals(user.getEmail())) {
+        if(checkUser != null) {
+            if (checkUser.getEmail().equals(user.getEmail())) {
                 return "profile/create";
             }
         }

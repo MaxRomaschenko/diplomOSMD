@@ -6,13 +6,13 @@
 </head>
 <body>
 
-<p th:text="${user.getEmail()}">VALUE</p>
-<p th:text="${user.getId()}">VALUE</p>
-<p th:text="${user.getPassword()}">VALUE</p>
+<p th:text="${flat.id}">VALUE</p>
+<p th:text="${flat.house.id}">VALUE</p>
+<p th:text="${flat.section.id}">VALUE</p>
 
-<a th:href="@{/profile/{id}/edit(id=${user.getId()})}">Edit</a>
+<a th:href="@{/flat/{id}/edit(id=${flat.getId()})}">Edit</a>
 
-<form method="post" th:action="@{/profile/{id}(id=${user.getId()})}">
+<form method="post" th:action="@{/flat/{id}(id=${flat.getId()})}">
     <input type="submit" value="DELETE"/>
 </form>
 

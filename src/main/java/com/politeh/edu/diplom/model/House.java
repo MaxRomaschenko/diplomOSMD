@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -33,4 +34,9 @@ public class House {
 
     @Column(name="updated_at")
     private LocalDateTime updated_at;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "house_id")
+//    , referencedColumnName  = "id"
+    private List<Tariff> tariffs ;
 }

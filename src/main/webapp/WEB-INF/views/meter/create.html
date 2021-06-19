@@ -32,6 +32,7 @@
     </div>
 </div>
 </body>
+
 <div class="header_top_second">
 
     <div class="container header_top_second_inner">
@@ -64,8 +65,6 @@
     </div>
     <div class="clear"></div>
 </div>
-
-
 <div class="content">
 
     <div class="content_wrapper">
@@ -97,29 +96,28 @@
 </div>
 <!-- Боковое меню -->
 
-
-
-<table class="table" >
-    <thead>
-    <tr>
-        <th >Услуги</th>
-        <th >Еденица измерения</th>
-        <th >Цена за ед. изм., грн</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="tariff : ${tariff}">
-        <td th:text="${tariff.name}" >Электроэнергия</td>
-        <td th:text="${tariff.unit}">кВт.ч</td>
-        <td th:text="${tariff.toPay}">2.0</td>
-    </tr>
-    </tbody>
-    <form action="/tariff/create" method="GET">
-        <button style="margin: 20px 20px 10px 70px; border-radius: 20px;">Добавить тариф</button>
-    </form>
-</table>
-
-
+<!-- Создание показний счётчика-->
+<form th:method="POST" th:action="@{/meter}" >
+    <label for="meterName">Enter name: </label>
+    <input type="text" th:value="${meter.meterName}" id="meterName" name="meterName"/>
+    <div style="color:#ff0000" th:if="${#fields.hasErrors('meter.meterName')}" th:errors="${meter.meterName}">name Error</div>
+    <br/>
+    <label for="date">Enter name: </label>
+    <input type="date" th:value="${date}" id="date" name="date"/>
+<!--    <div style="color:#ff0000" th:if="${#fields.hasErrors('data')}" th:errors="*{data}">name Error</div>-->
+    <br/>
+    <label for="meterReadings">Enter name: </label>
+    <input type="text" th:value="${meter.meterReadings}" id="meterReadings" name="meterReadings"/>
+    <div style="color:#ff0000" th:if="${#fields.hasErrors('meter.meterReadings')}" th:errors="*{meter.meterReadings}">name Error</div>
+    <br/>
+    <label for="unit">Enter name: </label>
+    <input type="text" th:value="${meter.unit}" id="unit" name="unit" />
+    <div style="color:#ff0000" th:if="${#fields.hasErrors('meter.unit')}" th:errors="${meter.unit}">name Error</div>
+    <br/>
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+<!-- Создание показний счётчика-->
 
 <footer id="footer">
     <div class="container">
@@ -167,4 +165,3 @@
 </div>
 </div>
 </html>
-

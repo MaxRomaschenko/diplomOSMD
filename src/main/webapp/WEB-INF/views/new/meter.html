@@ -97,29 +97,33 @@
 </div>
 <!-- Боковое меню -->
 
-
-
 <table class="table" >
     <thead>
     <tr>
-        <th >Услуги</th>
-        <th >Еденица измерения</th>
-        <th >Цена за ед. изм., грн</th>
+        <th >Адрес</th>
+        <th >Секция</th>
+        <th >№ квартиры</th>
+        <th >Счётчик</th>
+        <th >Дата</th>
+        <th >Показания</th>
+        <th >Ед. изм.</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="tariff : ${tariff}">
-        <td th:text="${tariff.name}" >Электроэнергия</td>
-        <td th:text="${tariff.unit}">кВт.ч</td>
-        <td th:text="${tariff.toPay}">2.0</td>
+    <tr th:each="meter : ${meters}">
+        <td th:text="${meter.flat.house.address}" >Электроэнергия</td>
+        <td th:text="${meter.flat.section.sectionNumber}">кВт.ч</td>
+        <td th:text="${meter.flat.flatNumber}">кВт.ч</td>
+        <td th:text="${meter.meterName }">2.0</td>
+        <td th:text="${meter.data }">2.0</td>
+        <td th:text="${meter.meterReadings }">2.0</td>
+        <td th:text="${meter.unit }">2.0</td>
     </tr>
     </tbody>
-    <form action="/tariff/create" method="GET">
-        <button style="margin: 20px 20px 10px 70px; border-radius: 20px;">Добавить тариф</button>
+    <form action="/meter/create" method="GET">
+        <button style="margin: 20px 20px 10px 70px; border-radius: 20px;">Добавить показания</button>
     </form>
 </table>
-
-
 
 <footer id="footer">
     <div class="container">
@@ -167,4 +171,3 @@
 </div>
 </div>
 </html>
-

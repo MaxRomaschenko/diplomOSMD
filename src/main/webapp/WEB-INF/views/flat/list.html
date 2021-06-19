@@ -6,12 +6,12 @@
 
 </head>
 <body>
-<div th:each="profile : ${profile}">
-    <a th:href="@{/profile/index/{id}(id=${profile.id})}"
-       th:text="${profile.id + ','}">profile</a>
+<div th:each="flat : ${flat}">
+    <a th:href="@{/flat/index/{id}(id=${flat.id})}"
+       th:text="${flat.id + ','}">flat</a>
 </div>
 
-<a href="/profile/create">Create new profile</a>
+<a href="/flat/create">Create new flat</a>
 
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.politeh.edu.diplom.controllers;
 
 import com.politeh.edu.diplom.model.House;
 import com.politeh.edu.diplom.services.HouseService;
+import com.politeh.edu.diplom.services.TariffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -17,10 +18,12 @@ import java.util.List;
 @RequestMapping("/house")
 public class HouseController {
     private final HouseService houseService;
+    private final TariffService tariffService;
 
     @Autowired
-    public HouseController(HouseService houseService) {
+    public HouseController(HouseService houseService, TariffService tariffService) {
         this.houseService = houseService;
+        this.tariffService = tariffService;
     }
 
     @GetMapping("/list")
@@ -48,7 +51,7 @@ public class HouseController {
         }
         house.setCreated_at(LocalDateTime.now());
         house.setUpdated_at(LocalDateTime.now());
-
+        house.setTariffs(tariffService.findAll());
 
         houseService.saveHouse(house);
         return "redirect:/house/list";

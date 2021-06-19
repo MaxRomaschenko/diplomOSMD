@@ -31,4 +31,8 @@ public class MeterService {
     public List<Meter> findAll(){
         return meterRepo.findAll();
     }
+
+    public List<Meter> findAllSorted(){
+        return meterRepo.findByOrderByFlat();
+    }
 }

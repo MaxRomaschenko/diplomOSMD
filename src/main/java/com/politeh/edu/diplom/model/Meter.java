@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -24,7 +25,7 @@ public class Meter {
     private String meterName;
 
     @Column(name = "data")
-    private LocalDateTime data;
+    private LocalDate data;
 
     @Column(name = "meter_readings")
     private Double meterReadings;

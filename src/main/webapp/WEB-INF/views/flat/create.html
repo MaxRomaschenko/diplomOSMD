@@ -16,6 +16,10 @@
     <input type="text" th:field="*{square}" id="square"/>
     <div style="color:#ff0000" th:if="${#fields.hasErrors('square')}"  th:errors="*{square}">email Error</div>
     <br/>
+    <label for="peopleliveNum">Enter Кол-во жильцов: </label>
+    <input type="text" th:field="*{peopleliveNum}" id="peopleliveNum"/>
+    <div style="color:#ff0000" th:if="${#fields.hasErrors('peopleliveNum')}"  th:errors="*{peopleliveNum}">email Error</div>
+    <br/>
     <label for="bankBook">Enter Лицевой счёт: </label>
     <input type="text" th:field="*{bankBook}" id="bankBook"/>
     <div style="color:#ff0000" th:if="${#fields.hasErrors('bankBook')}"  th:errors="*{bankBook}">email Error</div>

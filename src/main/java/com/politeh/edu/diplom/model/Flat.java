@@ -5,14 +5,13 @@ import com.politeh.edu.diplom.exception.FutureDateException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+
 
 @Data
 @NoArgsConstructor
@@ -36,6 +35,9 @@ public class Flat {
     @Column(name = "square")
     private Double square;
 
+    @Column(name = "people_live_Num")
+    private Integer peopleliveNum;
+
     @NotEmpty(message = "Введите лицевой счёт")
     @Size(max = 20,message = "Максимум 20 символов")
     @Column(name="bank_book")
@@ -47,18 +49,23 @@ public class Flat {
     @Column(name="updated_at")
     private LocalDateTime updated_at;
 
+
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, optional = false)
     @JoinColumn(name = "house_id",referencedColumnName  = "id")
     private House house;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, optional = false)
     @JoinColumn(name = "floor_id",referencedColumnName  = "id")
     private Floor floor;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, optional = false)
     @JoinColumn(name = "user_id",referencedColumnName  = "id")
     private User user;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, optional = false)
     @JoinColumn(name = "section_id",referencedColumnName  = "id")
     private Section section;
@@ -87,6 +94,14 @@ public class Flat {
         }
 
         this.square = square;
+    }
+
+    public Integer getPeopleliveNum() {
+        return peopleliveNum;
+    }
+
+    public void setPeopleliveNum(Integer peopleliveNum) {
+        this.peopleliveNum = peopleliveNum;
     }
 
     public void setBankBook(String bankBook) {
@@ -203,6 +218,10 @@ public class Flat {
         }
         public Builder setSquare(Double square){
             flat.setSquare(square);
+            return this;
+        }
+        public Builder setPeopleLive(Integer peopleLive){
+            flat.setPeopleliveNum(peopleLive);
             return this;
         }
         public Builder setBankBook(String bankBook){

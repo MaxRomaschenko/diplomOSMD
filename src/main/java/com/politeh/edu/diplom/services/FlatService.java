@@ -1,8 +1,6 @@
 package com.politeh.edu.diplom.services;
 
-import com.politeh.edu.diplom.model.Flat;
-import com.politeh.edu.diplom.model.Tariff;
-import com.politeh.edu.diplom.model.User;
+import com.politeh.edu.diplom.model.*;
 import com.politeh.edu.diplom.repository.FlatRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +17,14 @@ public class FlatService {
         this.flatRepo = flatRepo;
     }
 
+    public Flat findBySectionAndHouseAndFloor(House house, Section section,  Floor floor){
+        return  flatRepo.findBySectionAndHouseAndFloor(house,section,floor);
+    }
+
+
+    public Flat findByBankBook(String bankBook) {
+        return flatRepo.findByBankBook(bankBook);
+    }
 
     public Flat saveFlat(Flat flat){
         return flatRepo.save(flat);

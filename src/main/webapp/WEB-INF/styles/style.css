@@ -4,8 +4,6 @@
 * www.multipixels.net
 */
 
-
-
 .block-figure-3 * {
     box-sizing: border-box;
 }    
@@ -307,6 +305,7 @@
 
 html, body{
 	overflow-x: hidden;
+	height: 100%;
 }
 	
 #myInput {
@@ -356,6 +355,40 @@ html, body{
 }
 
 #myTable3 td {
+  /* Добавить нижнюю границу для всех строк таблицы */
+  border: 1px solid #ddd;
+}
+
+#myTable4 {
+  border-collapse: collapse; /* Свернуть границы */
+  width: 100%; /* Полная ширина */
+  border: 1px solid #ddd; /* Добавить серую границу */
+  font-size: 18px; /* Увеличить размер шрифта */
+  margin: 10px 0% 0% 0%;
+}
+
+#myTable4 td {
+  text-align: left; /* Выравнивание текста по левому краю */
+  padding: 5px; /* Добавить отступ */
+  line-height: 23px;
+}
+
+#myTable4 th {
+  text-align: left; /* Выравнивание текста по левому краю */
+  padding: 5px; /* Добавить отступ */
+}
+
+#myTable4 tr {
+  /* Добавить нижнюю границу для всех строк таблицы */
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable4 th {
+  /* Добавить нижнюю границу для всех строк таблицы */
+  border: 1px solid #ddd;
+}
+
+#myTable4 td {
   /* Добавить нижнюю границу для всех строк таблицы */
   border: 1px solid #ddd;
 }
@@ -436,7 +469,7 @@ body {
 
 /* Image Back ground and pattern Back ground */
 
-#pattern_bg { position: fixed; width: 100%; height: 100%; left: 0; top: 0; background: url(../images/pattern/pt101.jpg) repeat;  z-index: -1; }
+#pattern_bg { position: fixed; width: 100%; height: 100%; left: 0; top: 0; background-color: white;  z-index: -1; }
 #background { position: fixed; z-index: -1;  }
 
 
@@ -1771,7 +1804,7 @@ ul.client_inner_top img:hover {
     margin-top: 0px; padding-bottom: 0px; background-color: #ffffff; position: relative;
    }
    
-.content_wrapper_inner { padding-top: 30px; padding-bottom: 10px;}
+.content_wrapper_inner { padding-top: 30px; padding-bottom: 300px;}
 
 .page_wrapper_inner { padding-top: 60px; padding-bottom: 30px; }
 .page_wrapper_inner_c { padding-top: 30px; padding-bottom: 30px; }
@@ -2454,17 +2487,28 @@ box-shadow: 0px 1px 0px #fff;
   
 /* Footer */
 
-#footer {position:relative !important;background-color: #273543; border-top: 3px solid #ddd;
+#footer {position:absolute;background-color: #273543; border-top: 3px solid #ddd;
 -webkit-box-shadow: 0px 3px 7px rgba(50, 50, 50, 0.3);
 -moz-box-shadow:    0px 3px 7px rgba(50, 50, 50, 0.3);
 box-shadow:         0px 3px 7px rgba(50, 50, 50, 0.3);
-margin-top: 270px;
+left: 0px;
+    height: auto;
+    width: 100%;
+	margin: 12% 0% 0% 0%;
  } 
  
 .kvit {
 border:1px solid black;
 border-radius:30px;
 margin: -28% 0% 4% 70%;
+}	
+ 
+.prod-redlable {
+max-width: 25%
+}	
+
+.prod-redinput {
+max-width: 25%
 }	
  
 .prof2 {
@@ -2490,7 +2534,25 @@ margin: -28% 0% 4% 70%;
 .prof4 {
     width: 540px;
     z-index: 2;
-    margin: -31% 3% 6% 38%;
+    margin: -39% 3% 15% 38%;
+    overflow-x: hidden;
+    padding: 14px 14px;
+    border: 1px solid #c2c2c5;
+    border-radius: 10px;
+}
+
+.prof5 {
+    width: 240px;
+    z-index: 2;
+    overflow-x: hidden;
+    padding: 14px 14px;
+    border: 1px solid #c2c2c5;
+}
+
+.prof6 {
+    width: 1200px;
+    z-index: 2;
+    margin: -17% 0% 4% 31%;
     overflow-x: hidden;
     padding: 14px 14px;
     border: 1px solid #c2c2c5;

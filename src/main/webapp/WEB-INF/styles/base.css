@@ -112,7 +112,7 @@
 	ul.circle { list-style: circle outside; }
 	ul.disc { list-style: disc outside; }
 	ul.tick { list-style: none; }
-	ul.tick li { background: url('../../../resources/static/images/stuff/check.png') no-repeat; padding-left: 25px; }
+	ul.tick li { background: url('../images/stuff/check.png') no-repeat; padding-left: 25px; }
 	ul ul, ul ol,
 	ol ol, ol ul { margin: 4px 0 5px 30px; font-size: 90%;  }
 	ul ul li, ul ol li,
@@ -157,8 +157,8 @@
 	input[type="reset"]:hover,
 	input[type="button"]:hover {
 	  
-  	    color: # !important;		
-		/* background: #fdc53e;  Old browsers */
+  	    color: black !important;		
+	    background-color: #fdc53e;  Old browsers */
 		}
 
 	a.button:active,
@@ -166,7 +166,7 @@
 	input[type="submit"]:active,
 	input[type="reset"]:active,
 	input[type="button"]:active {
-		color: # !important;
+		color: black !important;
 		background: #; /* Old browsers */
 		}
 
@@ -481,7 +481,7 @@ a.btn_smallred:hover {
 		font-weight: bold;
 		font-size: 13px;  }
 	select {
-		width: 220px; }
+		width: 140px; }
 	input[type="checkbox"] {
 		display: inline; }
 	label span,

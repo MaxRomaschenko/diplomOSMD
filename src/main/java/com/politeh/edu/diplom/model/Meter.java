@@ -3,11 +3,14 @@ package com.politeh.edu.diplom.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 
 @Data
 @NoArgsConstructor
@@ -32,6 +35,8 @@ public class Meter {
 
     @Column(name = "unit")
     private String unit;
+
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, optional = false)
     @JoinColumn(name = "flat_id",referencedColumnName  = "id")
     private Flat flat;

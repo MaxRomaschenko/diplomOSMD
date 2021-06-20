@@ -28,6 +28,7 @@ public class FlatServiceTest {
     private static final Long FLAT_ONE_ID = 1L;
     private static final Integer FLAT_ONE_NUMBER = 1;
     private static final Double FLAT_ONE_SQUARE = 56.5;
+    private static final Integer FLAT_ONE_PEOPLE_COUNT = 2;
     private static final String FLAT_ONE_BANKBOOK = "Default bankbook";
     private static final LocalDateTime FLAT_ONE_CREATED_AT = LocalDateTime.of(1990, Month.JANUARY, 1, 0, 0);
     private static final LocalDateTime FLAT_ONE_UPDATED_AT = LocalDateTime.of(2005, Month.JANUARY, 1, 0, 0);
@@ -101,6 +102,7 @@ public class FlatServiceTest {
             FLAT_ONE_ID,
             FLAT_ONE_NUMBER,
             FLAT_ONE_SQUARE,
+            FLAT_ONE_PEOPLE_COUNT,
             FLAT_ONE_BANKBOOK,
             FLAT_ONE_CREATED_AT,
             FLAT_ONE_UPDATED_AT,

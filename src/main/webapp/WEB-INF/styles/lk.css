@@ -14,6 +14,73 @@
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
+
+#register, 
+#prod-red2 {
+    position: absolute;
+    top: 0px;
+    width: 35%;	
+    padding: 18px 6% 60px 6%;
+    margin: 10% 0% 0% 25%;
+    background: rgb(247, 247, 247);
+    border: 1px solid rgba(147, 184, 189,0.8);
+    -webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    -webkit-box-shadow: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#rashod {
+    position: absolute;
+    top: 0px;
+    width: 35%;	
+    padding: 18px 6% 60px 6%;
+    margin: 10% 0% 0% 25%;
+    background: rgb(247, 247, 247);
+    border: 1px solid rgba(147, 184, 189,0.8);
+    -webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    -webkit-box-shadow: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#prihod {
+    position: absolute;
+    top: 0px;
+    width: 35%;	
+    padding: 18px 6% 60px 6%;
+    margin: 10% 0% 0% 25%;
+    background: rgb(247, 247, 247);
+    border: 1px solid rgba(147, 184, 189,0.8);
+    -webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    -webkit-box-shadow: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#register, 
+#kvit {
+    position: absolute;
+    top: 0px;
+    width: 35%;	
+    padding: 18px 6% 60px 6%;
+    margin: 10% 0% 0% 25%;
+    background: rgb(247, 247, 247);
+    border: 1px solid rgba(147, 184, 189,0.8);
+    -webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    -webkit-box-shadow: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
 #register {	
     z-index: 21;
     opacity: 0;
@@ -220,6 +287,66 @@ display: block;
 }
 
 #zatemnenie {
+background: rgba(102, 102, 102, 0.68);
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0;
+left: 0;
+display: none;
+z-index: 9999999999;
+}
+
+#prof-red:target {
+display: block;
+}
+
+#prof-red {
+background: rgba(102, 102, 102, 0.68);
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0;
+left: 0;
+display: none;
+z-index: 9999999999;
+}
+
+#create-rashod {
+background: rgba(102, 102, 102, 0.68);
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0;
+left: 0;
+display: none;
+z-index: 9999999999;
+}
+
+#create-prihod {
+background: rgba(102, 102, 102, 0.68);
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0;
+left: 0;
+display: none;
+z-index: 9999999999;
+}
+
+#create-rashod:target {
+display: block;
+}
+
+#create-prihod:target {
+display: block;
+}
+
+#create-kvit:target {
+display: block;
+}
+
+#create-kvit {
 background: rgba(102, 102, 102, 0.68);
 width: 100%;
 height: 100%;

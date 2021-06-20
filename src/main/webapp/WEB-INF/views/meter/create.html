@@ -70,9 +70,7 @@
     <div class="content_wrapper">
         <div class="content_wrapper_inner">
             <div class="clear"></div>
-        </div>
-    </div>
-</div>
+
 
 <!-- Боковое меню -->
 <div class="sidenav">
@@ -98,19 +96,36 @@
 
 <!-- Создание показний счётчика-->
 <form th:method="POST" th:action="@{/meter}" >
-    <label for="meterName">Enter name: </label>
+
+    <label for="address">Адресс: </label>
+    <select size="1" id="address" name="address" class="invoice" th:field ="${meter.flat.house.address}" >
+        <option th:each="flat: ${flats}"  th:text="${flat.house.address}" th:value="${flat.house.address}"></option>
+    </select>
+    <br />
+    <label for="section">Секция: </label>
+    <select size="1"  id="section" name="section" class="invoice" th:field ="${meter.flat.section.sectionNumber}" >
+        <option th:each="flat: ${flats}"  th:text="${flat.section.sectionNumber}" th:value="${flat.section.sectionNumber}"></option>
+    </select>
+    <br />
+
+    <label for="flatNum">Номер квартиры: </label>
+    <select size="1" id="flatNum" name="flatNum" class="invoice" th:field ="${meter.flat.flatNumber}" >
+        <option th:each="flat: ${flats}"  th:text="${flat.flatNumber}" th:value="${flat.flatNumber}"></option>
+    </select>
+    <br />
+
+    <label for="meterName">Счётчик: </label>
     <input type="text" th:value="${meter.meterName}" id="meterName" name="meterName"/>
     <div style="color:#ff0000" th:if="${#fields.hasErrors('meter.meterName')}" th:errors="${meter.meterName}">name Error</div>
     <br/>
-    <label for="date">Enter name: </label>
+    <label for="date">Дата: </label>
     <input type="date" th:value="${date}" id="date" name="date"/>
-<!--    <div style="color:#ff0000" th:if="${#fields.hasErrors('data')}" th:errors="*{data}">name Error</div>-->
     <br/>
-    <label for="meterReadings">Enter name: </label>
+    <label for="meterReadings">Показания счётчика: </label>
     <input type="text" th:value="${meter.meterReadings}" id="meterReadings" name="meterReadings"/>
     <div style="color:#ff0000" th:if="${#fields.hasErrors('meter.meterReadings')}" th:errors="*{meter.meterReadings}">name Error</div>
     <br/>
-    <label for="unit">Enter name: </label>
+    <label for="unit">Ед. измерения: </label>
     <input type="text" th:value="${meter.unit}" id="unit" name="unit" />
     <div style="color:#ff0000" th:if="${#fields.hasErrors('meter.unit')}" th:errors="${meter.unit}">name Error</div>
     <br/>

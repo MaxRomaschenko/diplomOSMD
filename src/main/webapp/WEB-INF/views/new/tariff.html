@@ -22,13 +22,11 @@
 
 <div id="pattern_bg"></div>
 <div id="zatemnenie">
-    <?php include 'login.php';?>
 
 </div>
 
 <div id="main_wrapper">
     <div class="main_wrapper_inner">
-
     </div>
 </div>
 </body>
@@ -71,34 +69,27 @@
     <div class="content_wrapper">
         <div class="content_wrapper_inner">
             <div class="clear"></div>
-        </div>
-    </div>
-</div>
-
-<!-- Боковое меню -->
-<div class="sidenav">
-    <a href="kvit.php">Квитанции</a>
-    <br>
-    <a th:href="@{/tariff/}">Тарифы</a>
-    <br>
-    <a href="#" >Касса</a>
-    <br>
-    <a href="#">Квартиры</a>
-    <br>
-    <a href="#">Владельцы квартир</a>
-    <br>
-    <a href="#">Дома</a>
-    <br>
-    <a href="/news/list">Новости</a>
-    <br>
-    <a href="/meter">Показания счётчиков</a>
-    <br>
-    <a th:href="@{/profile/}">Профиль</a>
-</div>
-<!-- Боковое меню -->
-
-
-
+            <!-- Боковое меню -->
+            <div class="sidenav">
+                <a href="/invoice">Квитанции</a>
+                <br>
+                <a th:href="@{/tariff/}">Тарифы</a>
+                <br>
+                <a href="#" >Касса</a>
+                <br>
+                <a href="#">Квартиры</a>
+                <br>
+                <a href="#">Владельцы квартир</a>
+                <br>
+                <a href="#">Дома</a>
+                <br>
+                <a href="/news/list">Новости</a>
+                <br>
+                <a href="/meter">Показания счётчиков</a>
+                <br>
+                <a th:href="@{/profile/}">Профиль</a>
+            </div>
+            <!-- Боковое меню -->
 <table class="table" >
     <thead>
     <tr>
@@ -114,10 +105,10 @@
         <td th:text="${tariff.toPay}">2.0</td>
     </tr>
     </tbody>
-    <form action="/tariff/create" method="GET">
-        <button style="margin: 20px 20px 10px 70px; border-radius: 20px;">Добавить тариф</button>
-    </form>
 </table>
+            <form action="/tariff/create" method="GET">
+                <button style="margin: 20px 20px 10px 70px; border-radius: 20px;">Добавить тариф</button>
+            </form>
 
 
 

@@ -14,9 +14,6 @@
     <link th:href = "@{/styles/prettyPhoto.css}"  href="/static/css/prettyPhoto.css" rel="stylesheet">
     <link th:href = "@{/styles/style.css}"  href="/static/css/style.css" rel="stylesheet">
     <link th:href = "@{/styles/lk.css}"  href="/static/css/lk.css" rel="stylesheet">
-
-    <!--        <link th:href = "@{/styles/rs-plugin/css/settings.css}"  rel="stylesheet" type="text/css" href="/static/rs-plugin/css/settings.css" media="screen" />-->
-
     <link th:href = "@{/styles/font-awesome.min.css}"  href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen">
     <link th:href = "@{/styles/ico/favicon.ico}"  rel="shortcut icon" href="/static/ico/favicon.ico">
 </head>
@@ -96,39 +93,45 @@
             </div>
             <!-- Боковое меню -->
 
-            <form action="/invoice/create" method="GET">
-                <button class="kvit" >Создать кватинцию</button>
+            <!-- Создание показний счётчика-->
+            <form th:method="POST" th:action="@{/invoice}" th:object="${invoice}"  name="invoice" class="invoice">
+                <label for="address">Адресс: </label>
+                <input type="text" th:field= "*{flat.house.address}" id="address" name = "address" />
+<!--                <div style="color:#ff0000" th:if="${#fields.hasErrors('flat.house.adress')}" th:errors="*{flat.house.address}">name Error</div>-->
+                <br/>
+                <label for="section">Секцию: </label>
+                <input type="text" th:field ="*{flat.section}" id="section" name="section" />
+<!--                <div style="color:#ff0000" th:if="${#fields.hasErrors('invoice.flat.section')}" th:errors="*{flat.section}">name Error</div>-->
+                <br/>
+                <label for="flatNumber">Номер квартиры: </label>
+                <input type="text" th:field="*{flat.flatNumber}" id="flatNumber" name = "flatNumber" >
+<!--                <div style="color:#ff0000" th:if="${#fields.hasErrors('invoice.flat.flatNumber')}" th:errors="*{flat.flatNumber}">name Error</div>-->
+<!--                <br/>-->
+
+                <select th:value="${stringStatus}" size="1"  name="stringStatus" class="invoice">
+                    <option  value = "PAYED" >PAYED<Br></option>
+                    <option  value= "NOTPAYED" >NOTPAYED<Br></option>
+                </select>
+                <label for="date_start">Период с: </label>
+                <input type="date" th:value="${date_start}" id="date_start" name="date_start"/>
+                <br/>
+                <label for="date_end">Период по: </label>
+                <input type="date" th:value="${date_end}" id="date_end" name="date_end"/>
+                <br/>
+                <label for="flat.bankBook">Лицевой счёт: </label>
+                <input type="text" th:field ="*{flat.bankBook}" id="flat.bankBook" />
+<!--                <div style="color:#ff0000" th:if="${#fields.hasErrors('invoice.flat.bankBook')}" th:errors="*{flat.bankBook}">name Error</div>-->
+                <br/>
+                <select size="1"  name="email" class="invoice" th:field ="*{flat.user.email}" >
+                    <option th:each="flat: ${flats}"  th:text="${flat.user.email}" th:value="${flat.user.email}"></option>
+                </select>
+
+                <br/>
+                <br/>
+                <br/>
+                <input type="submit" value="Create!"/>
             </form>
-
-            <table id="myTable">
-                <tr class="header">
-                    <th>Номер квитанции <input type="text" id="myInput" onkeyup=""></th>
-                    <th>Дата<input type="text" id="myInput" onkeyup=""></th>
-                    <th>Месяц<input type="text" id="myInput" onkeyup=""></th>
-                    <th>Квартира<input type="text" id="myInput" onkeyup=""></th>
-                    <th>Владелец <input type="text" id="myInput" onkeyup=""></th>
-                    <th>Статус
-                        <select>
-                            <option th:each="invoice: ${invoices}"  th:text="${invoice.status}"
-                                    th:value="${invoice.status}"
-                            ></option>
-                        </select>
-                    </th>
-                    <th>Сумма<input type="text" id="myInput" onkeyup=""></th>
-                    <th></th>
-                </tr>
-                <tr th:each="invoice : ${invoices}">
-                    <td th:text="${invoice.invoiceNumber}"></td>
-                    <td th:text="${invoice.periodStart}"></td>
-                    <td th:text="${invoice.periodEnd}"></td>
-                    <td th:text="${invoice.flat.flatNumber}"></td>
-                    <td th:text="${invoice.flat.user.lastName} + ${invoice.flat.user.firstName} + ${invoice.flat.user.middleName}" ></td>
-                    <td th:text="${invoice.status}"></td>
-                    <td th:text="${invoice.toPay}"></td>
-                    <td><a href="">✎</a></td>
-                </tr>
-
-            </table>
+            <!-- Создание показний счётчика-->
 
 
             <footer id="footer">

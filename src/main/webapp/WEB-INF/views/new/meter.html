@@ -22,7 +22,6 @@
 
 <div id="pattern_bg"></div>
 <div id="zatemnenie">
-    <?php include 'login.php';?>
 
 </div>
 
@@ -44,7 +43,7 @@
                             <ul class="sf-menu clearfix">
                                 <li class="current"><a href="/" class="trigger"><span>Главная</span></a>
                                 </li>
-                                <li><a href="/news/list" class="trigger"><span>Новости</span></a>
+                                <li><a href="/news" class="trigger"><span>Новости</span></a>
                                 </li>
                                 <li><a th:href="@{/profile/}" class="trigger" th:method="GET"><span>Личный кабинет</span></a>
                                 </li>
@@ -71,13 +70,10 @@
     <div class="content_wrapper">
         <div class="content_wrapper_inner">
             <div class="clear"></div>
-        </div>
-    </div>
-</div>
 
 <!-- Боковое меню -->
 <div class="sidenav">
-    <a href="kvit.php">Квитанции</a>
+    <a href="/invoice">Квитанции</a>
     <br>
     <a th:href="@{/tariff/}">Тарифы</a>
     <br>
@@ -89,40 +85,50 @@
     <br>
     <a href="#">Дома</a>
     <br>
-    <a href="/news/list">Новости</a>
+    <a href="/news">Новости</a>
     <br>
     <a href="/meter">Показания счётчиков</a>
     <br>
     <a th:href="@{/profile/}">Профиль</a>
 </div>
 <!-- Боковое меню -->
+            <a href="/meter/create">
+                <button style="margin-top: -1020px;margin-left: 1424px;">Добавить показания</button>
+            </a>
 
 <table class="table" >
     <thead>
     <tr>
-        <th >Адрес</th>
-        <th >Секция</th>
-        <th >№ квартиры</th>
-        <th >Счётчик</th>
-        <th >Дата</th>
-        <th >Показания</th>
-        <th >Ед. изм.</th>
+        <th >Адрес <input type="text" id="myInput" onkeyup=""></th>
+        <th >Секция <input type="text" id="myInput" onkeyup=""></th>
+        <th >№ квартиры
+
+            <select>
+                <option th:each="flat: ${flats}"  th:text="${flat.flatNumber}"
+                        th:value="${flat.flatNumber}"
+                         ></option>
+            </select>
+        </th>
+        <th >Счётчик <input type="text" id="myInput" onkeyup=""></th>
+        <th >Дата <input type="text" id="myInput" onkeyup=""></th>
+        <th >Показания <input type="text" id="myInput" onkeyup=""></th>
+        <th >Ед. изм. <input type="text" id="myInput" onkeyup=""></th>
+        <th> </th>
     </tr>
     </thead>
-    <tbody>
+<!--    <tbody>-->
     <tr th:each="meter : ${meters}">
-        <td th:text="${meter.flat.house.address}" >Электроэнергия</td>
-        <td th:text="${meter.flat.section.sectionNumber}">кВт.ч</td>
-        <td th:text="${meter.flat.flatNumber}">кВт.ч</td>
-        <td th:text="${meter.meterName }">2.0</td>
-        <td th:text="${meter.data }">2.0</td>
-        <td th:text="${meter.meterReadings }">2.0</td>
-        <td th:text="${meter.unit }">2.0</td>
+        <td th:text="${meter.flat.house.address}" ></td>
+        <td th:text="${meter.flat.section.sectionNumber}"></td>
+        <td th:text="${meter.flat.flatNumber}"></td>
+        <td th:text="${meter.meterName }"></td>
+        <td th:text="${meter.data }"></td>
+        <td th:text="${meter.meterReadings }"></td>
+        <td th:text="${meter.unit }"></td>
+        <td><a href="">✎</a></td>
     </tr>
-    </tbody>
-    <form action="/meter/create" method="GET">
-        <button style="margin: 20px 20px 10px 70px; border-radius: 20px;">Добавить показания</button>
-    </form>
+<!--    </tbody>-->
+
 </table>
 
 <footer id="footer">
@@ -166,7 +172,7 @@
             </div>
         </div>
     </div>
-</footer>
+    </footer>
 </div>
 </div>
 </div>

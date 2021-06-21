@@ -99,8 +99,8 @@
 <table class="table" >
     <thead>
     <tr>
-        <th >Адрес <input type="text" id="myInput" onkeyup=""></th>
-        <th >Секция <input type="text" id="myInput" onkeyup=""></th>
+        <th >Адрес <input type="text"  onkeyup=""></th>
+        <th >Секция <input type="text"  onkeyup=""></th>
         <th >№ квартиры
 
             <select>
@@ -109,14 +109,14 @@
                          ></option>
             </select>
         </th>
-        <th >Счётчик <input type="text" id="myInput" onkeyup=""></th>
-        <th >Дата <input type="text" id="myInput" onkeyup=""></th>
-        <th >Показания <input type="text" id="myInput" onkeyup=""></th>
-        <th >Ед. изм. <input type="text" id="myInput" onkeyup=""></th>
+        <th >Счётчик <input type="text"  onkeyup=""></th>
+        <th >Дата <input type="text"  onkeyup=""></th>
+        <th >Показания <input type="text"  onkeyup=""></th>
+        <th >Ед. изм. <input type="text"  onkeyup=""></th>
         <th> </th>
     </tr>
     </thead>
-<!--    <tbody>-->
+    <tbody>
     <tr th:each="meter : ${meters}">
         <td th:text="${meter.flat.house.address}" ></td>
         <td th:text="${meter.flat.section.sectionNumber}"></td>
@@ -127,7 +127,7 @@
         <td th:text="${meter.unit }"></td>
         <td><a href="">✎</a></td>
     </tr>
-<!--    </tbody>-->
+    </tbody>
 
 </table>
 

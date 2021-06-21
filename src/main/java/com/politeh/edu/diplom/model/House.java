@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name="house")
-public class House {
+public class  House {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

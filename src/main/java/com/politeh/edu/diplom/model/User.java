@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,6 +19,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty(message = "Введите пароль")
+    @NotNull
     @Size(min = 8,message = "Минимум 8 символов")
     @Column(name="password")
     private String password;
@@ -54,8 +56,8 @@ public class User {
     @Column(name="telegram")
     private String telegram;
     @Column(name="created_at")
-    private LocalDateTime created_at;
+    private LocalDate created_at;
     @Column(name="updated_at")
-    private LocalDateTime updated_at;
+    private LocalDate updated_at;
 
 }

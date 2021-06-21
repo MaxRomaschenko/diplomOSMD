@@ -30,7 +30,7 @@ public class  FloorController {
 
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('user:read')")
-    public String listOfFlats(Model model) {
+    public String listOfFloors(Model model) {
         List<Floor> floors = floorService.findAll();
         model.addAttribute("floor", floors);
         return "floor/list";

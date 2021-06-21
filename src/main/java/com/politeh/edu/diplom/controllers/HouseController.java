@@ -28,7 +28,7 @@ public class HouseController {
 
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('user:read')")
-    public String listOfUsers(Model model) {
+    public String listOfHouses(Model model) {
         List<House> houses = houseService.findAll();
         model.addAttribute("house", houses);
 
@@ -37,13 +37,13 @@ public class HouseController {
 
     @GetMapping("/create")
     @PreAuthorize("hasAuthority('admin:write')")
-    public String createUserForm(@ModelAttribute("house") House house){
+    public String createHouseForm(@ModelAttribute("house") House house){
         return "house/create";
     }
 
     @PostMapping()
     @PreAuthorize("hasAuthority('admin:write')")
-    public String createUser(@ModelAttribute("house") @Valid House house,
+    public String createHouse(@ModelAttribute("house") @Valid House house,
                              BindingResult bindingResult){
         House houseCheck = houseService.findByAddress(house.getAddress());
         if (bindingResult.hasErrors() || houseCheck != null) {

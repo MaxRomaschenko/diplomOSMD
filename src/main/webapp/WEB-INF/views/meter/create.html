@@ -101,13 +101,14 @@
     <select size="1" id="address" name="address" class="invoice" th:field ="${meter.flat.house.address}" >
         <option th:each="flat: ${flats}"  th:text="${flat.house.address}" th:value="${flat.house.address}"></option>
     </select>
+
     <br />
     <label for="section">Секция: </label>
     <select size="1"  id="section" name="section" class="invoice" th:field ="${meter.flat.section.sectionNumber}" >
         <option th:each="flat: ${flats}"  th:text="${flat.section.sectionNumber}" th:value="${flat.section.sectionNumber}"></option>
     </select>
-    <br />
 
+    <br />
     <label for="flatNum">Номер квартиры: </label>
     <select size="1" id="flatNum" name="flatNum" class="invoice" th:field ="${meter.flat.flatNumber}" >
         <option th:each="flat: ${flats}"  th:text="${flat.flatNumber}" th:value="${flat.flatNumber}"></option>

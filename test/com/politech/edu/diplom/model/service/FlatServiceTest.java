@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Arrays;
@@ -76,8 +77,8 @@ public class FlatServiceTest {
     private static final String FLAT_ONE_USER_PHONE = "88005553535";
     private static final String FLAT_ONE_USER_VIBER = "user_viber_1";
     private static final String FLAT_ONE_USER_TELEGRAM = "user_telegram_1";
-    private static final LocalDateTime FLAT_ONE_USER_CREATED_AT = LocalDateTime.of(1995, Month.JANUARY, 1, 0, 0);
-    private static final LocalDateTime FLAT_ONE_USER_UPDATED_AT = LocalDateTime.of(2020, Month.JANUARY, 1, 0, 0);
+    private static final LocalDate FLAT_ONE_USER_CREATED_AT = LocalDate.of(1995, Month.JANUARY, 1);
+    private static final LocalDate FLAT_ONE_USER_UPDATED_AT = LocalDate.of(2020, Month.JANUARY, 1);
     private static final User FLAT_ONE_USER = new User(
             FLAT_ONE_USER_ID,
             FLAT_ONE_USER_PASSWORD,

@@ -18,7 +18,7 @@ import java.time.Month;
 @AllArgsConstructor
 @Entity
 @Table(name="flat")
-public class Flat {
+public class  Flat {
 
     private static final Integer BANKBOOK_MAX_LENGTH = 20;
     private static final LocalDateTime MIN_DATE

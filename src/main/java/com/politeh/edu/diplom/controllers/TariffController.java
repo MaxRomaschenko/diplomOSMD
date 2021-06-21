@@ -24,7 +24,7 @@ public class TariffController {
 
     @GetMapping("/")
     @PreAuthorize("hasAuthority('user:read')")
-    public String listOfUsers(Model model) {
+    public String listOfTariffs(Model model) {
         List<Tariff> tariffs = tariffService.findAll();
         model.addAttribute("tariff", tariffs);
 
@@ -33,13 +33,13 @@ public class TariffController {
 
     @GetMapping("/create")
     @PreAuthorize("hasAuthority('admin:write')")
-    public String createUserForm(@ModelAttribute("tariff") Tariff tariff){
+    public String createTariffForm(@ModelAttribute("tariff") Tariff tariff){
         return "tariff/create";
     }
 
     @PostMapping()
     @PreAuthorize("hasAuthority('admin:write')")
-    public String createUser(@ModelAttribute("tariff") @Valid Tariff tariff,
+    public String createTariff(@ModelAttribute("tariff") @Valid Tariff tariff,
                              BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
             return "tariff/create";

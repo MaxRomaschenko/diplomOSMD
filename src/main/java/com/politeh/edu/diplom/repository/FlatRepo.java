@@ -11,5 +11,7 @@ import java.util.List;
 public interface FlatRepo extends JpaRepository<Flat,Long> {
     List<Flat> findAll();
     Flat findByBankBook(String bankBook);
-    Flat findBySectionAndHouseAndFloor(House house, Section section,  Floor floor);
+    Flat findByFlatNumber(Integer flatNum);
+    Flat findByHouseIdAndSectionIdAndFloorId(Long houseId, Long sectionId,  Long floorId);
+    Flat findByHouseAndSectionAndFloor(House house, Section section,  Floor floor);
 }

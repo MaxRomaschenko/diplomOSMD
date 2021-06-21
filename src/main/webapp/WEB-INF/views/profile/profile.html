@@ -37,36 +37,37 @@
         <div id="prod-red2" class="animate form">
             <a href="#close_window" class="close_window" style="position: absolute;right: 10px;top: 4px;border: none;font-size: 20px;">X</a>
             <form th:method="POST" th:action="@{/profile/{id}/edit(id=${user.getId()})}" th:object="${user}">
-                <label class="prod-redlable" for="email">Enter email: </label>
-                <input style="margin: 0% 0% 4px 0%; max-width:30%;" type="email" th:field="*{email}" id="email"/>
-                <div style="color:#ff0000" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</div>
-                <br/>
-                <label style="margin: -13% 0% 0% 50%;" class="prod-redlable" for="password">Enter password: </label>
-                <input style="margin: 0% 0% 4px 50%; max-width:30%;" type="text" th:field="*{password}" id="password"/>
+                <label style="margin: -13% 0% 0% 50%;" class="prod-redlable" for="password">Пароль: </label>
+                <input style="margin: 0% 0% 4px 50%; max-width:30%;" type="text"  id="password"/>
                 <div style="color:red; margin: 0% 0% 0% 50%; max-width:25%;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</div>
                 <br/>
-                <label class="prod-redlable" for="firstName">Enter firstName: </label>
+                <label style="margin: -13% 0% 0% 50%;" class="prod-redlable" for="password1">Повторний пароль: </label>
+                <input style="margin: 0% 0% 4px 50%; max-width:30%;" type="text"  id="password1"/>
+<!--                th:field="*{password}"-->
+                <div style="color:red; margin: 0% 0% 0% 50%; max-width:25%;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</div>
+                <br/>
+                <label class="prod-redlable" for="firstName">Введите имя : </label>
                 <input style="margin: 0% 0% 4px 0%; max-width:30%;" type="text" th:field="*{firstName}" id="firstName"/>
                 <div style="color:red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">password Error</div>
                 <br/>
-                <label class="prod-redlable" for="lastName">Enter lastName: </label>
+                <label class="prod-redlable" for="lastName">Введите Фамилию: </label>
                 <input style="margin: 0% 0% 4px 0%; max-width:30%;" type="text" th:field="*{lastName}" id="lastName"/>
                 <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">password Error</div>
                 <br/>
-                <label class="prod-redlable" for="middleName">Enter middleName: </label>
+                <label class="prod-redlable" for="middleName">Введите Отчество: </label>
                 <input style="margin: 0% 0% 4px 0%; max-width:30%;" type="text" th:field="*{middleName}" id="middleName"/>
                 <div style="color:red" th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}">password Error</div>
                 <br/>
                 <br/>
-                <label style="margin: -40% 0% 0% 50%;" class="prod-redlable" for="phone">Enter phone: </label>
+                <label style="margin: -40% 0% 0% 50%;" class="prod-redlable" for="phone">Введите телефон: </label>
                 <input style="margin: 0% 0% 4px 50%; max-width:30%;" type="text" th:field="*{phone}" id="phone" placeholder="+375 (XX) XXX-XX-XX"/>
                 <div style="color:red; margin: 0% 0% 0% 50%; max-width:25%;" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">password Error</div>
                 <br/>
-                <label style="margin: 0% 0% 0% 50%;" class="prod-redlable" for="viber">Enter viber: </label>
+                <label style="margin: 0% 0% 0% 50%;" class="prod-redlable" for="viber">Введите Viber: </label>
                 <input style="margin: 0% 0% 4px 50%; max-width:30%;" type="text" th:field="*{viber}" id="viber"/>
-                <div style="color:red; margin: 0% 0% 0% 50%; max-width:25%;" th:if="${#fields.hasErrors('viber')}" th:errors="*{middleName}">password Error</div>
+                <div style="color:red; margin: 0% 0% 0% 50%; max-width:25%;" th:if="${#fields.hasErrors('viber')}" th:errors="*{viber}">password Error</div>
                 <br/>
-                <label style="margin: 0% 0% 0% 50%;" class="prod-redlable" for="telegram">Enter telegram: </label>
+                <label style="margin: 0% 0% 0% 50%;" class="prod-redlable" for="telegram">Введите Telegram: </label>
                 <input style="margin: 0% 0% 4px 50%; max-width:30%;" type="text" th:field="*{telegram}" id="telegram"/>
                 <div style="color:red; margin: 0% 0% 0% 50%; max-width:25%;" th:if="${#fields.hasErrors('telegram')}" th:errors="*{telegram}">password Error</div>
                 <br/>

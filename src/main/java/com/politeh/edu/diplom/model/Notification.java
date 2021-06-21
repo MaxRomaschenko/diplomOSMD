@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -26,10 +27,10 @@ public class Notification {
     private String messageText;
 
     @Column(name="created_at")
-    private LocalDateTime created_at;
+    private LocalDate created_at;
 
     @Column(name="updated_at")
-    private LocalDateTime updated_at;
+    private LocalDate updated_at;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, optional = false)
     @JoinColumn(name = "user_id",referencedColumnName  = "id")

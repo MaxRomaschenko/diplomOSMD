@@ -41,7 +41,7 @@ public class FlatController {
 
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('user:read')")
-    public String listOfUsers(Model model) {
+    public String listOfFlats(Model model) {
         List<Flat> flats = flatService.findAll();
         model.addAttribute("flat", flats);
 
@@ -50,7 +50,7 @@ public class FlatController {
 
     @GetMapping("/create")
     @PreAuthorize("hasAuthority('admin:write')")
-    public String createUserForm(@ModelAttribute("flat") Flat flat){
+    public String createFlatForm(@ModelAttribute("flat") Flat flat){
         return "flat/create";
     }
 
@@ -65,7 +65,7 @@ public class FlatController {
 
         Flat flat1 = new Flat.Builder(flat)
                 .setUser( userService.findByEmail(flat.getUser().getEmail()))
-                .setFloor(floorService.findByfloor(flat.getFloor().getFloorNumber()))
+                .setFloor(floorService.findByfloorNum(flat.getFloor().getFloorNumber()))
                 .setSection(sectionService.findBySectionNumber(flat.getSection().getSectionNumber()))
                 .setHouse(houseService.findByAddress(flat.getHouse().getAddress()))
                 .build();
@@ -98,7 +98,7 @@ public class FlatController {
         }
         Flat flat1 = new Flat.Builder(flat)
                 .setUser( userService.findByEmail(flat.getUser().getEmail()))
-                .setFloor(floorService.findByfloor(flat.getFloor().getFloorNumber()))
+                .setFloor(floorService.findByfloorNum(flat.getFloor().getFloorNumber()))
                 .setSection(sectionService.findBySectionNumber(flat.getSection().getSectionNumber()))
                 .setHouse(houseService.findByAddress(flat.getHouse().getAddress()))
                 .build();

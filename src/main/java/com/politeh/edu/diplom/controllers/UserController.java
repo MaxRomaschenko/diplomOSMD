@@ -14,7 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -31,7 +31,7 @@ public class UserController {
 
     @GetMapping("/")
     @PreAuthorize("hasAuthority('user:read')")
-    public String userProfile(Model model){
+    public String userProfile(){
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userService.findByEmail(userDetails.getUsername());
         return "redirect:index/" + user.getId();
@@ -73,8 +73,8 @@ public class UserController {
                 return "profile/create";
             }
         }
-        user.setCreated_at(LocalDateTime.now());
-        user.setUpdated_at(LocalDateTime.now());
+        user.setCreated_at(LocalDate.now());
+        user.setUpdated_at(LocalDate.now());
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
@@ -98,7 +98,7 @@ public class UserController {
 
         User user1 = userService.findById(user.getId());
         user.setCreated_at(user1.getCreated_at());
-        user.setUpdated_at(LocalDateTime.now());
+        user.setUpdated_at(LocalDate.now());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         String url = user.getId().toString();
 

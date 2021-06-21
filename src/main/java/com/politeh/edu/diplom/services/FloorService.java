@@ -29,7 +29,7 @@ public class FloorService {
         floorRepo.deleteById(id);
     }
 
-    public Floor findByfloor(Integer floorNum){
+    public Floor findByfloorNum(Integer floorNum){
         return floorRepo.findByFloorNumber(floorNum);
     }
 

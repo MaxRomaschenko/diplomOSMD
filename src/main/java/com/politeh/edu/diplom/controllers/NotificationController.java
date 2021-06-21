@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -59,8 +60,8 @@ public class NotificationController {
         if (bindingResult.hasErrors()) {
             return "notification/create";
         }
-        notification.setCreated_at(LocalDateTime.now());
-        notification.setUpdated_at(LocalDateTime.now());
+        notification.setCreated_at(LocalDate.now());
+        notification.setUpdated_at(LocalDate.now());
 
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userService.findByEmail(userDetails.getUsername());
@@ -86,7 +87,7 @@ public class NotificationController {
 
         Notification notification1 = notificationService.findById(notification.getId());
         notification.setCreated_at(notification1.getCreated_at());
-        notification.setUpdated_at(LocalDateTime.now());
+        notification.setUpdated_at(LocalDate.now());
 
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userService.findByEmail(userDetails.getUsername());

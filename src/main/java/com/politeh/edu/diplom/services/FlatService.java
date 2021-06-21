@@ -17,10 +17,15 @@ public class FlatService {
         this.flatRepo = flatRepo;
     }
 
-    public Flat findBySectionAndHouseAndFloor(House house, Section section,  Floor floor){
-        return  flatRepo.findBySectionAndHouseAndFloor(house,section,floor);
+    public Flat findByHouseAndSectionAndFloor(Long houseId, Long sectionId,  Long floorId){
+        return  flatRepo.findByHouseIdAndSectionIdAndFloorId(houseId,sectionId,floorId);
     }
-
+    public Flat findByHouseAndSectionAndFloor(House house, Section section,  Floor floor){
+        return  flatRepo.findByHouseAndSectionAndFloor(house,section,floor);
+    }
+    public Flat findByFlatNumber(Integer flatNum){
+        return flatRepo.findByFlatNumber(flatNum);
+    }
 
     public Flat findByBankBook(String bankBook) {
         return flatRepo.findByBankBook(bankBook);

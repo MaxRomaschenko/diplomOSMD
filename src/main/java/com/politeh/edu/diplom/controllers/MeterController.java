@@ -1,8 +1,7 @@
 package com.politeh.edu.diplom.controllers;
 
 
-import com.politeh.edu.diplom.model.Flat;
-import com.politeh.edu.diplom.model.Meter;
+import com.politeh.edu.diplom.model.*;
 import com.politeh.edu.diplom.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -69,13 +68,24 @@ public class MeterController {
                               @ModelAttribute("date") String date,
                              BindingResult bindingResult){
 
-
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         meter.setData(LocalDate.parse(date, dateTimeFormatter));
-        meter.setFlat(flatService.findBySectionAndHouseAndFloor(
+        Flat flat =  flatService.findByFlatNumber(meter.getFlat().getFlatNumber());
+        Floor floor = floorService.findByfloorNum(flat.getFloor().getFloorNumber());
+
+        Flat testFlat = flatService.findByHouseAndSectionAndFloor(
                 houseService.findByAddress(meter.getFlat().getHouse().getAddress()),
                 sectionService.findBySectionNumber(meter.getFlat().getSection().getSectionNumber()),
-                floorService.findByfloor(meter.getFlat().getFloor().getFloorNumber())));
+                floorService.findByfloorNum(flat.getFloor().getFloorNumber())
+        );
+//        Flat testFlat = flatService.findByHouseAndSectionAndFloor(
+//                houseService.findById(meter.getFlat().getHouse().getId()).getId(),
+//                houseService.findById(meter.getFlat().getHouse().getId()).getId(),
+//                floorService.findById(flat.getFloor().getId()).getId()
+//        );
+
+        meter.setFlat(testFlat);
+
         if (bindingResult.hasErrors()) {
             return "meter/create";
         }
